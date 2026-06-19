@@ -1,10 +1,9 @@
-
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>إلى هبة ❤️</title>
+    <title>مكاننا الخاص ❤️</title>
     <style>
         :root {
             --primary-pink: #ff769f;
@@ -22,6 +21,58 @@
             position: relative;
             min-height: 100vh;
         }
+        /* شاشة قفل الموقع قبل الدخول */
+        #gatekeeper {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--soft-pink);
+            z-index: 9999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .gate-card {
+            background: white;
+            padding: 40px 30px;
+            border-radius: 25px;
+            box-shadow: 0 10px 30px rgba(253, 121, 168, 0.2);
+            text-align: center;
+            max-width: 400px;
+            width: 85%;
+        }
+        .gate-card h2 { color: var(--dark-pink); margin-bottom: 20px; }
+        .gate-card input {
+            width: 100%;
+            padding: 12px;
+            box-sizing: border-box;
+            border: 2px solid var(--soft-pink);
+            border-radius: 12px;
+            font-size: 1.1rem;
+            text-align: center;
+            margin-bottom: 15px;
+            outline: none;
+        }
+        .gate-card input:focus { border-color: var(--primary-pink); }
+        .gate-card button {
+            background: var(--primary-pink);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        /* المحتوى الرئيسي للموقع (مخفي في البداية) */
+        #mainContent {
+            display: none;
+        }
+
         /* القلوب المتطايرة في الخلفية */
         .hearts-bg {
             position: fixed;
@@ -74,7 +125,6 @@
             line-height: 1.8;
             color: #555;
             margin: 20px 0;
-            transition: all 0.3s ease;
         }
         .nav-btn {
             background: var(--primary-pink);
@@ -103,55 +153,70 @@
 </head>
 <body>
 
-    <div class="hearts-bg" id="heartsBg"></div>
-
-    <div class="container">
-        <h1>إلى هبة ❤️</h1>
-        <div class="heart-main">❤️</div>
-        
-        <!-- صندوق الرسائل التفاعلي -->
-        <div class="message-box" id="msgDisplay">جاري تحميل الرسائل...</div>
-        <div>
-            <button class="nav-btn" id="prevBtn" onclick="changeMessage(-1)">👈 السابق</button>
-            <button class="nav-btn" id="nextBtn" onclick="changeMessage(1)">التالي 👉</button>
+    <div id="gatekeeper">
+        <div class="gate-card">
+            <h2>مكاننا السري ❤️</h2>
+            <p style="color: #777; margin-bottom: 20px;">الرجاء إدخال كلمة المرور السرية للدخول</p>
+            <input type="password" id="sitePassword" placeholder="كلمة المرور...">
+            <button onclick="checkSitePassword()">دخول ✨</button>
         </div>
+    </div>
 
-        <!-- العداد -->
-        <div class="counter-title">الوقت الذي عشناه معاً:</div>
-        <div class="countdown">
-            <div class="time-box"><span id="days">0</span>أيام</div>
-            <div class="time-box"><span id="hours">0</span>ساعات</div>
-            <div class="time-box"><span id="minutes">0</span>دقائق</div>
-            <div class="time-box"><span id="seconds">0</span>ثوانٍ</div>
-        </div>
+    <div id="mainContent">
+        <div class="hearts-bg" id="heartsBg"></div>
 
-        <!-- قسم لوحة التحكم السري -->
-        <div class="admin-section">
-            <button class="admin-toggle" onclick="toggleAdminPanel()">دخول لوحة التحكم (خاص بـ MK)</button>
+        <div class="container">
+            <h1>إلى هبة ❤️</h1>
+            <div class="heart-main">❤️</div>
             
-            <div class="admin-panel" id="adminPanel">
-                <div id="authBox">
-                    <label>أدخل كلمة المرور السرية:</label>
-                    <input type="password" id="adminPass" placeholder="كلمة المرور...">
-                    <button onclick="loginAdmin()">دخول</button>
-                </div>
-                <div id="controlBox" style="display:none;">
-                    <h3>تعديل بيانات الموقع ✨</h3>
-                    <label>تاريخ البداية (السنة-الشهر-اليوم):</label>
-                    <input type="date" id="newDate">
-                    
-                    <label>الرسائل الموجهة لهبة (اكتب كل رسالة في سطر مستقل):</label>
-                    <textarea id="newMessages" rows="6" placeholder="اكتب كل رسالة هنا ثم اضغط انتر لتبدأ رسالة جديدة..."></textarea>
-                    
-                    <button onclick="saveAdminChanges()">حفظ وتحديث الموقع 💾</button>
+            <div class="message-box" id="msgDisplay">جاري تحميل الرسائل...</div>
+            <div>
+                <button class="nav-btn" id="prevBtn" onclick="changeMessage(-1)">👈 السابق</button>
+                <button class="nav-btn" id="nextBtn" onclick="changeMessage(1)">التالي 👉</button>
+            </div>
+
+            <div class="counter-title">الوقت الذي عشناه معاً:</div>
+            <div class="countdown">
+                <div class="time-box"><span id="days">0</span>أيام</div>
+                <div class="time-box"><span id="hours">0</span>ساعات</div>
+                <div class="time-box"><span id="minutes">0</span>دقائق</div>
+                <div class="time-box"><span id="seconds">0</span>ثوانٍ</div>
+            </div>
+
+            <div class="admin-section">
+                <button class="admin-toggle" onclick="toggleAdminPanel()">دخول لوحة التحكم (خاص بـ MK)</button>
+                
+                <div class="admin-panel" id="adminPanel">
+                    <div id="controlBox">
+                        <h3>تعديل بيانات الموقع ✨</h3>
+                        <label>تاريخ البداية (السنة-الشهر-اليوم):</label>
+                        <input type="date" id="newDate">
+                        
+                        <label>الرسائل الموجهة لهبة (اكتب كل رسالة في سطر مستقل):</label>
+                        <textarea id="newMessages" rows="6" placeholder="اكتب كل رسالة هنا ثم اضغط انتر لتبدأ رسالة جديدة..."></textarea>
+                        
+                        <button onclick="saveAdminChanges()">حفظ وتحديث الموقع 💾</button>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <div class="footer" style="margin-top: 30px; font-size: 0.85rem; color: #b2bec3;">صُنع بكل حب لأجل هبة ✨</div>
+            <div class="footer" style="margin-top: 30px; font-size: 0.85rem; color: #b2bec3;">صُنع بكل حب لأجل هبة ✨</div>
+        </div>
     </div>
 
     <script>
+        // التحقق من كلمة السر الأساسية للموقع
+        function checkSitePassword() {
+            const enteredPass = document.getElementById("sitePassword").value;
+            if (enteredPass === "Mk") {
+                document.getElementById("gatekeeper").style.display = "none";
+                document.getElementById("mainContent").style.display = "block";
+                initSite(); // تشغيل مؤثرات الموقع والعداد
+            } else {
+                alert("كلمة المرور غير صحيحة! هذا المكان خاص بشخصين فقط 🔒");
+            }
+        }
+
         // البيانات الافتراضية الأولية
         const defaultDate = "2025-11-01";
         const defaultMessages = [
@@ -160,12 +225,10 @@
             "أعدكِ أن أظل بجانبكِ، وأن نحسب أيامنا معاً ثانية بثانية وللأبد 🔒"
         ];
 
-        // تحميل البيانات من الذاكرة أو استخدام الافتراضية
         let savedDate = localStorage.getItem('loveStartDate') || defaultDate;
         let savedMessages = JSON.parse(localStorage.getItem('loveMessages')) || defaultMessages;
         let currentMsgIndex = 0;
 
-        // تشغيل عداد الوقت
         function updateCounter() {
             const startDate = new Date(savedDate);
             const now = new Date();
@@ -181,9 +244,7 @@
             document.getElementById("minutes").innerText = minutes;
             document.getElementById("seconds").innerText = seconds;
         }
-        setInterval(updateCounter, 1000);
 
-        // عرض وتغيير الرسائل التفاعلية
         function displayMessage() {
             if(savedMessages.length === 0) {
                 document.getElementById("msgDisplay").innerText = "لا توجد رسائل حالياً.";
@@ -196,12 +257,9 @@
 
         function changeMessage(direction) {
             currentMsgIndex += direction;
-            if(currentMsgIndex < 0) currentMsgIndex = 0;
-            if(currentMsgIndex >= savedMessages.length) currentMsgIndex = savedMessages.length - 1;
             displayMessage();
         }
 
-        // إنشاء القلوب المتطايرة في الخلفية
         function createFallingHearts() {
             const bg = document.getElementById("heartsBg");
             setInterval(() => {
@@ -211,27 +269,28 @@
                 heart.style.left = Math.random() * 100 + "vw";
                 heart.style.fontSize = (Math.random() * 15 + 15) + "px";
                 heart.style.animationDuration = (Math.random() * 3 + 4) + "s";
-                bg.appendChild(heart);
+                if(bg) bg.appendChild(heart);
                 setTimeout(() => { heart.remove(); }, 7000);
             }, 400);
         }
 
-        // نظام لوحة التحكم (Admin Panel)
-        function toggleAdminPanel() {
-            const panel = document.getElementById("adminPanel");
-            panel.style.display = panel.style.display === "block" ? "none" : "block";
+        // تشغيل الوظائف الأساسية بعد الدخول الصحيح
+        function initSite() {
+            displayMessage();
+            setInterval(updateCounter, 1000);
+            updateCounter();
+            createFallingHearts();
         }
 
-        function loginAdmin() {
-            const pass = document.getElementById("adminPass").value;
-            if(pass === "Mk") {
-                document.getElementById("authBox").style.display = "none";
-                document.getElementById("controlBox").style.display = "block";
-                // تعبئة البيانات الحالية داخل اللوحة لسهولة التعديل
+        // لوحة التحكم الداعمة لتعديل الرسائل مباشرة
+        function toggleAdminPanel() {
+            const panel = document.getElementById("adminPanel");
+            if (panel.style.display === "block") {
+                panel.style.display = "none";
+            } else {
+                panel.style.display = "block";
                 document.getElementById("newDate").value = savedDate;
                 document.getElementById("newMessages").value = savedMessages.join("\n");
-            } else {
-                alert("كلمة المرور غير صحيحة! خاصة بـ MK فقط.");
             }
         }
 
@@ -251,16 +310,9 @@
             currentMsgIndex = 0;
             displayMessage();
             updateCounter();
-            alert("تم تحديث وحفظ بيانات الموقع بنجاح يا بطل! ❤️");
+            alert("تم تحديث الرسائل والبيانات بنجاح! ❤️");
             toggleAdminPanel();
         }
-
-        // تشغيل الدوال عند تحميل الصفحة
-        window.onload = function() {
-            displayMessage();
-            updateCounter();
-            createFallingHearts();
-        };
     </script>
 </body>
 </html>
