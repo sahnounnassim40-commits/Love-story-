@@ -3,316 +3,367 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>مكاننا الخاص ❤️</title>
+    <title>عالم هبة السحري التفاعلي 👑</title>
     <style>
-        :root {
-            --primary-pink: #ff769f;
-            --soft-pink: #fff0f3;
-            --dark-pink: #d63031;
-            --accent-yellow: #ffeaa7;
-        }
-        body {
+        /* تصميم الخلفيات والألوان العامة */
+        * {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            background-color: var(--soft-pink);
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            color: #4a4a4a;
-            overflow-x: hidden;
-            position: relative;
+        }
+
+        body {
+            background: linear-gradient(135deg, #fdf2f8 0%, #fff1f2 50%, #fffbeb 100%);
             min-height: 100vh;
-        }
-        /* شاشة قفل الموقع قبل الدخول */
-        #gatekeeper {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: var(--soft-pink);
-            z-index: 9999;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        .gate-card {
-            background: white;
-            padding: 40px 30px;
-            border-radius: 25px;
-            box-shadow: 0 10px 30px rgba(253, 121, 168, 0.2);
-            text-align: center;
-            max-width: 400px;
-            width: 85%;
-        }
-        .gate-card h2 { color: var(--dark-pink); margin-bottom: 20px; }
-        .gate-card input {
-            width: 100%;
-            padding: 12px;
-            box-sizing: border-box;
-            border: 2px solid var(--soft-pink);
-            border-radius: 12px;
-            font-size: 1.1rem;
-            text-align: center;
-            margin-bottom: 15px;
-            outline: none;
-        }
-        .gate-card input:focus { border-color: var(--primary-pink); }
-        .gate-card button {
-            background: var(--primary-pink);
-            color: white;
-            border: none;
-            padding: 12px 25px;
-            border-radius: 12px;
-            font-size: 1rem;
-            font-weight: bold;
-            cursor: pointer;
-            width: 100%;
+            color: #1f2937;
+            overflow-x: hidden;
+            padding-bottom: 100px;
         }
 
-        /* المحتوى الرئيسي للموقع (مخفي في البداية) */
-        #mainContent {
-            display: none;
-        }
-
-        /* القلوب المتطايرة في الخلفية */
-        .hearts-bg {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            pointer-events: none;
-        }
-        .falling-heart {
-            position: absolute;
-            color: var(--primary-pink);
-            opacity: 0.6;
-            animation: floatUp 6s linear infinite;
-        }
-        @keyframes floatUp {
-            0% { transform: translateY(105vh) rotate(0deg); opacity: 0.6; }
-            100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
-        }
         .container {
             max-width: 600px;
-            width: 90%;
-            margin: 30px auto;
-            text-align: center;
-            background: #ffffff;
-            padding: 30px;
-            border-radius: 25px;
-            box-shadow: 0 10px 30px rgba(253, 121, 168, 0.15);
-            position: relative;
-        }
-        h1 { color: var(--dark-pink); font-size: 2.5rem; margin-bottom: 10px; }
-        .heart-main { color: var(--primary-pink); font-size: 3.5rem; animation: heartbeat 1.2s infinite; margin: 15px 0; }
-        @keyframes heartbeat {
-            0%, 100% { transform: scale(1); }
-            20%, 60% { transform: scale(1.15); }
-            40% { transform: scale(1.05); }
-        }
-        /* صندوق الرسائل التفاعلي */
-        .message-box {
-            background: #fff;
-            border: 2px dashed var(--primary-pink);
+            margin: 0 auto;
             padding: 20px;
-            border-radius: 15px;
-            min-height: 100px;
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        /* شاشة القفل والأمان */
+        #lockScreen {
+            position: fixed;
+            inset: 0;
+            background: linear-gradient(135deg, #fdf2f8, #fff1f2, #fffbeb);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.2rem;
-            line-height: 1.8;
-            color: #555;
-            margin: 20px 0;
+            z-index: 100;
+            padding: 20px;
+            transition: all 0.5s ease;
         }
-        .nav-btn {
-            background: var(--primary-pink);
+
+        .lock-card {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 40px 30px;
+            border-radius: 24px;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+            max-width: 380px;
+            width: 100%;
+            text-align: center;
+            border: 1px solid #fce7f3;
+        }
+
+        .lock-icon { font-size: 50px; margin-bottom: 15px; }
+        .lock-card h2 { font-size: 24px; color: #1f2937; margin-bottom: 10px; }
+        .lock-card p { color: #6b7280; font-size: 14px; margin-bottom: 25px; }
+        
+        .lock-input {
+            width: 100%;
+            padding: 14px;
+            border-radius: 50px;
+            border: 1px solid #fbcfe8;
+            text-align: center;
+            outline: none;
+            font-size: 16px;
+            margin-bottom: 15px;
+            transition: all 0.3s;
+        }
+        .lock-input:focus { border-color: #ec4899; box-shadow: 0 0 0 3px rgba(236, 72, 153, 0.1); }
+
+        .lock-btn {
+            width: 100%;
+            background: linear-gradient(to right, #f472b6, #fb7185);
             color: white;
-            border: none;
-            padding: 8px 15px;
-            border-radius: 20px;
-            cursor: pointer;
             font-weight: bold;
-            font-size: 0.9rem;
-            margin: 5px;
+            padding: 14px;
+            border-radius: 50px;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            box-shadow: 0 10px 15px -3px rgba(244, 114, 182, 0.3);
         }
-        .nav-btn:disabled { background: #ccc; }
-        /* العداد */
-        .counter-title { font-size: 1.2rem; color: #2d3436; font-weight: bold; margin-top: 25px; }
-        .countdown { display: flex; justify-content: center; gap: 12px; margin-top: 15px; flex-wrap: wrap; }
-        .time-box { background: var(--accent-yellow); color: #2d3436; padding: 10px 15px; border-radius: 12px; font-weight: bold; min-width: 65px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
-        .time-box span { display: block; font-size: 1.6rem; color: var(--dark-pink); }
-        /* لوحة التحكم والمسؤول */
-        .admin-section { margin-top: 50px; padding-top: 20px; border-top: 1px dashed #ddd; }
-        .admin-toggle { background: none; border: none; color: #b2bec3; cursor: pointer; font-size: 0.85rem; text-decoration: underline; }
-        .admin-panel { display: none; background: #f9f9f9; padding: 20px; border-radius: 15px; margin-top: 15px; text-align: right; border: 1px solid #eee; }
-        .admin-panel input, .admin-panel textarea { width: 100%; box-sizing: border-box; padding: 10px; margin: 8px 0; border: 1px solid #ddd; border-radius: 8px; font-family: inherit; }
-        .admin-panel button { background: #2ecc71; color: white; border: none; padding: 10px 20px; border-radius: 8px; cursor: pointer; font-weight: bold; }
+
+        .error-msg { color: #e11d48; font-size: 13px; font-weight: bold; margin-bottom: 10px; display: none; }
+
+        /* الأقسام والبطاقات التفاعلية */
+        .card {
+            background: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(10px);
+            padding: 25px;
+            border-radius: 24px;
+            border: 1px solid #fce7f3;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            position: relative;
+        }
+
+        .header-section h1 { font-size: 28px; color: #db2777; margin-top: 10px; font-weight: 800; }
+        .header-section p { color: #6b7280; font-size: 13px; margin-top: 5px; }
+
+        /* 1. عداد الوقت المستمر */
+        .grid-timer { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 15px; }
+        .timer-box { background: white; padding: 12px; border-radius: 16px; border: 1px solid #fce7f3; }
+        .timer-box .value { display: block; font-size: 24px; font-weight: 900; color: #db2777; }
+        .timer-box .label { font-size: 11px; color: #9ca3af; }
+
+        /* 2. شريط التمرير */
+        .slider-input { width: 100%; margin: 15px 0; cursor: pointer; accent-color: #ec4899; }
+        .slider-result { font-size: 28px; font-weight: 900; color: #ec4899; margin-bottom: 5px; }
+        .slider-desc { font-size: 14px; font-weight: 600; color: #be185d; min-height: 22px; }
+
+        /* 3. زر لا الهارب */
+        .escape-box { min-height: 150px; display: flex; flex-direction: column; justify-content: center; align-items: center; }
+        .btn-container { display: flex; gap: 20px; justify-content: center; align-items: center; width: 100%; height: 60px; position: relative; margin-top: 15px; }
+        .yes-btn { background: linear-gradient(to right, #ec4899, #f43f5e); color: white; font-weight: bold; padding: 12px 35px; border-radius: 50px; border: none; cursor: pointer; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); z-index: 10; font-size: 15px; }
+        .no-btn { background: #f3f4f6; color: #6b7280; font-weight: 600; padding: 10px 25px; border-radius: 50px; border: 1px solid #e5e7eb; position: absolute; cursor: pointer; transition: all 0.15s ease; z-index: 10; }
+
+        /* 4. صندوق الهدايا التفاعلي */
+        .gift-icon { font-size: 55px; cursor: pointer; transition: transform 0.2s; }
+        .gift-icon:hover { transform: scale(1.1); }
+        .gift-content { display: none; animation: fadeIn 0.5s ease; }
+        .reset-gift { font-size: 12px; color: #9ca3af; text-decoration: underline; background: none; border: none; cursor: pointer; margin-top: 10px; }
+
+        /* 5. بلورة الحظ */
+        .crystal-ball { width: 85px; height: 85px; background: linear-gradient(135deg, #c084fc, #f472b6, #fba5a5); border-radius: 50%; margin: 15px auto; box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1); cursor: pointer; display: flex; alignItems: center; justify-content: center; font-size: 38px; border: 4px solid white; display: flex; align-items: center; justify-content: center; transition: transform 0.3s; }
+        .crystal-ball:active { transform: scale(0.9); }
+        .fortune-text { font-size: 14px; font-weight: 500; color: #7e22ce; background: #faf5ff; padding: 12px; border-radius: 16px; border: 1px solid #e9d5ff; margin-top: 10px; }
+
+        /* 6. تحدي الـ 5 ثواني */
+        .game-btn { background: #a855f7; color: white; font-weight: bold; padding: 10px 25px; border-radius: 50px; border: none; font-size: 13px; cursor: pointer; margin-top: 10px; }
+        .click-target { width: 75px; height: 75px; background: #f43f5e; color: white; font-weight: 900; border-radius: 50%; font-size: 26px; border: 4px solid white; cursor: pointer; box-shadow: 0 10px 15px rgba(244, 63, 94, 0.3); margin: 15px auto; display: none; align-items: center; justify-content: center; }
+        .game-status { font-size: 13px; color: #f43f5e; font-weight: bold; display: none; }
+        .game-result { display: none; background: #fff5f5; padding: 12px; border-radius: 16px; border: 1px solid #fee2e2; margin-top: 10px; }
+
+        /* 7. لوحة الذكريات والرسائل المحفوظة (تعويض الداتابيز محلياً) */
+        .msg-input-box { display: flex; gap: 10px; margin-top: 15px; }
+        .msg-input { flex: 1; padding: 12px 20px; border-radius: 50px; border: 1px solid #fbcfe8; outline: none; }
+        .msg-submit { background: #db2777; color: white; border: none; padding: 0 20px; border-radius: 50px; cursor: pointer; font-weight: bold; }
+        .board-messages { text-align: right; margin-top: 15px; display: flex; flex-direction: column; gap: 10px; max-height: 200px; overflow-y: auto; }
+        .board-note { background: white; padding: 10px 15px; border-radius: 12px; border-right: 4px solid #db2777; font-size: 13px; box-shadow: 0 2px 4px rgba(0,0,0,0.02); }
+
+        /* 8. الخط الزمني للذكريات */
+        .timeline { border-right: 2px solid #fbcfe8; padding-right: 20px; text-align: right; display: flex; flex-direction: column; gap: 25px; margin-top: 20px; }
+        .timeline-item { position: relative; }
+        .timeline-dot { position: absolute; right: -27px; top: 4px; background: #f472b6; width: 12px; height: 12px; border-radius: 50%; border: 2px solid white; }
+        .timeline-item h4 { font-size: 14px; font-weight: bold; color: #1f2937; }
+        .timeline-item p { font-size: 12px; color: #6b7280; margin-top: 4px; }
+
+        /* عناصر التحكم العائمة (الصوت والعلكة) */
+        .floating-controls { position: fixed; bottom: 25px; left: 25px; right: 25px; display: flex; justify-content: space-between; pointer-events: none; z-index: 40; }
+        .floating-btn { width: 56px; height: 56px; background: white; border-radius: 50%; border: 1px solid #fce7f3; display: flex; align-items: center; justify-content: center; font-size: 24px; cursor: pointer; box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1); pointer-events: auto; transition: transform 0.2s; }
+        .bubblegum-container { display: flex; flex-direction: column; align-items: center; pointer-events: auto; }
+        .bubble-popup { margin-bottom: 8px; background: white; color: #db2777; font-weight: bold; padding: 8px 16px; border-radius: 16px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); fontSize: 12px; border: 1px solid #fbcfe8; max-width: 180px; text-align: center; display: none; font-size: 12px; }
+
+        .hidden { display: none !important; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
     </style>
 </head>
 <body>
 
-    <div id="gatekeeper">
-        <div class="gate-card">
-            <h2>مكاننا السري ❤️</h2>
-            <p style="color: #777; margin-bottom: 20px;">الرجاء إدخال كلمة المرور السرية للدخول</p>
-            <input type="password" id="sitePassword" placeholder="كلمة المرور...">
-            <button onclick="checkSitePassword()">دخول ✨</button>
+    <div id="lockScreen">
+        <div class="lock-card">
+            <div class="lock-icon">🔒</div>
+            <h2>موقعنا السري الخواص</h2>
+            <p>أدخلي الكلمة السرية المخصصة لدخول عالمنا</p>
+            <form id="lockForm">
+                <input type="password" id="passInput" class="lock-input" placeholder="اكتبِ اسمكِ الجميل بـ English...">
+                <p id="errorMsg" class="error-msg">الكلمة خاطئة يا روحي، حاولي مجدداً! ❤️</p>
+                <button type="submit" class="lock-btn">دخول الملكة هبة ✨</button>
+            </form>
         </div>
     </div>
 
-    <div id="mainContent">
-        <div class="hearts-bg" id="heartsBg"></div>
+    <div id="mainContent" class="hidden">
+        
+        <audio id="bgMusic" src="another-love.mp3" loop></audio>
 
         <div class="container">
-            <h1>إلى هبة ❤️</h1>
-            <div class="heart-main">❤️</div>
             
-            <div class="message-box" id="msgDisplay">جاري تحميل الرسائل...</div>
-            <div>
-                <button class="nav-btn" id="prevBtn" onclick="changeMessage(-1)">👈 السابق</button>
-                <button class="nav-btn" id="nextBtn" onclick="changeMessage(1)">التالي 👉</button>
+            <div class="card header-section">
+                <span>👑</span>
+                <h1>عالم هبة السحري التفاعلي</h1>
+                <p>كل حركة هنا تتفاعل معكِ وتنبض بموسيقى الحب والجمال</p>
             </div>
 
-            <div class="counter-title">الوقت الذي عشناه معاً:</div>
-            <div class="countdown">
-                <div class="time-box"><span id="days">0</span>أيام</div>
-                <div class="time-box"><span id="hours">0</span>ساعات</div>
-                <div class="time-box"><span id="minutes">0</span>دقائق</div>
-                <div class="time-box"><span id="seconds">0</span>ثوانٍ</div>
+            <div class="card">
+                <h3 style="font-size: 15px; color:#db2777; font-weight: bold;">عداد حبنا المستمر منذ أول يوم ⏱️</h3>
+                <div class="grid-timer" dir="ltr">
+                    <div class="timer-box"><span class="value" id="timer-days">0</span><span class="label">يوم</span></div>
+                    <div class="timer-box"><span class="value" id="timer-hours">0</span><span class="label">ساعة</span></div>
+                    <div class="timer-box"><span class="value" id="timer-mins">0</span><span class="label">دقيقة</span></div>
+                    <div class="timer-box"><span class="value" id="timer-secs">0</span><span class="label">ثانية</span></div>
+                </div>
             </div>
 
-            <div class="admin-section">
-                <button class="admin-toggle" onclick="toggleAdminPanel()">دخول لوحة التحكم (خاص بـ MK)</button>
-                
-                <div class="admin-panel" id="adminPanel">
-                    <div id="controlBox">
-                        <h3>تعديل بيانات الموقع ✨</h3>
-                        <label>تاريخ البداية (السنة-الشهر-اليوم):</label>
-                        <input type="date" id="newDate">
-                        
-                        <label>الرسائل الموجهة لهبة (اكتب كل رسالة في سطر مستقل):</label>
-                        <textarea id="newMessages" rows="6" placeholder="اكتب كل رسالة هنا ثم اضغط انتر لتبدأ رسالة جديدة..."></textarea>
-                        
-                        <button onclick="saveAdminChanges()">حفظ وتحديث الموقع 💾</button>
+            <div class="card">
+                <h3 style="font-size: 16px; font-weight: bold;">اسحبي الشريط: كم أحبكِ اليوم؟ 🤔</h3>
+                <input type="range" id="loveSlider" class="slider-input" min="0" max="100" value="50">
+                <div id="sliderResult" class="slider-result">50%</div>
+                <div id="sliderDesc" class="slider-desc">حبنا يكبر في كل دقيقة وثانية نعيشها معاً 🌸</div>
+            </div>
+
+            <div class="card escape-box" id="questionBox">
+                <div id="pollQuestion">
+                    <h3 style="font-size: 19px; font-weight: 900;">هل تحبينني يا هبة؟ 🥺❤️</h3>
+                    <div class="btn-container">
+                        <button class="yes-btn" id="yesBtn">نعم، أكيد! 🥰</button>
+                        <button class="no-btn" id="noBtn">لا 😢</button>
+                    </div>
+                </div>
+                <div id="celebrationSection" class="hidden">
+                    <div style="font-size: 45px;">🎉💖🎆</div>
+                    <h4 style="font-size: 18px; font-weight: bold; color: #db2777; margin-top: 5px;">كنت أعلم ذلك! يملأ حبكِ دنيتي فرحاً وسعادة أبدية!</h4>
+                </div>
+            </div>
+
+            <div class="card">
+                <div id="giftClosed">
+                    <div class="gift-icon" id="giftBtn">🎁</div>
+                    <h4 style="font-size: 13px; font-weight: bold; color: #4b5563; margin-top: 10px;">اضغطي لفتح هدية هبة المخصصة اليوم!</h4>
+                </div>
+                <div id="giftOpened" class="gift-content">
+                    <div style="font-size: 45px;">🧸💌👑</div>
+                    <h4 style="font-size: 17px; font-weight: bold; color: #db2777; margin-top: 5px;">وردة حمراء افتراضية ووعد مخلص بأن أبقى بجانبك للأبد!</h4>
+                    <button class="reset-gift" id="closeGiftBtn">إعادة إغلاق الصندوق</button>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3 style="font-size: 17px; font-weight: bold;">🔮 بلورة المشاعر وكاشف الحظ اليومي</h3>
+                <div class="crystal-ball" id="crystalBall">🔮</div>
+                <p class="fortune-text" id="fortuneText">اضغطي لفرك البلورة وكشف حظكِ اليوم... 🔮</p>
+            </div>
+
+            <div class="card">
+                <h3 style="font-size: 15px; font-weight: bold;">⏱️ تحدي سرعة ضغطات الحب لهبة</h3>
+                <p style="font-size: 12px; color: #9ca3af; margin-top: 4px;">اضغطي على الزر بأكبر عدد ممكن خلال 5 ثوانٍ لإرسال نبضات الحب!</p>
+                <button class="game-btn" id="startGameBtn">ابدئي التحدي الآن 🚀</button>
+                <div class="game-status" id="gameTimer">الوقت المتبقي: 5 ثوانٍ</div>
+                <div class="click-target" id="clickTarget">❤️</div>
+                <div class="game-result" id="gameResult">
+                    <h4 id="resultScoreText" style="font-size: 14px; font-weight: bold; color: #b91c1c;"></h4>
+                    <button id="retryGameBtn" style="font-size: 12px; color: #f43f5e; text-decoration: underline; background: none; border: none; cursor: pointer; margin-top: 5px;">إعادة التحدي</button>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3 style="font-size: 16px; font-weight: bold;">📌 لوحة رسائلنا وذكرياتنا السرية</h3>
+                <p style="font-size: 11px; color: #9ca3af;">اكتبي رسالة قصيرة أو ذكرى اليوم لتبقى محفوظة هنا في المتصفح دائماً</p>
+                <div class="msg-input-box">
+                    <input type="text" id="boardInput" class="msg-input" placeholder="اكتبي كلمتكِ هنا...">
+                    <button id="boardSubmit" class="msg-submit">حفظ ✨</button>
+                </div>
+                <div class="board-messages" id="boardMessages"></div>
+            </div>
+
+            <div class="card">
+                <h3 style="font-size: 17px; font-weight: bold; color: #db2777; margin-bottom: 10px;">محطات حكايتنا اللطيفة 🗺️</h3>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <h4>بداية الحكاية 🌸</h4>
+                        <p>اليوم الذي دخلتِ فيه حياتي وتغير كل شيء للأجمل.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <h4>الذكرى السنوية اللطيفة 🗓️</h4>
+                        <p>محطة محفورة في القلب (23/10/2025)، تاريخ ولادة حبنا الميمون.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <h4>اليوم وكل يوم ❤️</h4>
+                        <p>ما زلتِ الملكة والنور الذي يضيء دربي، وأحبكِ أكثر من الأمس.</p>
                     </div>
                 </div>
             </div>
 
-            <div class="footer" style="margin-top: 30px; font-size: 0.85rem; color: #b2bec3;">صُنع بكل حب لأجل هبة ✨</div>
         </div>
+
+        <div class="floating-controls">
+            <button class="floating-btn" id="musicToggleBtn" style="color: #ec4899;">🎵</button>
+            
+            <div class="floating-btn bubblegum-container" style="background: none; border: none; box-shadow: none;">
+                <div class="bubble-popup" id="bubblePopup"></div>
+                <div class="floating-btn" id="bubblegumBtn" style="background: linear-gradient(to top right, #f472b6, #fb7185); color: white; border: 2px solid white;">🍬</div>
+            </div>
+        </div>
+
     </div>
 
     <script>
-        // التحقق من كلمة السر الأساسية للموقع
-        function checkSitePassword() {
-            const enteredPass = document.getElementById("sitePassword").value;
-            if (enteredPass === "Mk") {
-                document.getElementById("gatekeeper").style.display = "none";
-                document.getElementById("mainContent").style.display = "block";
-                initSite(); // تشغيل مؤثرات الموقع والعداد
-            } else {
-                alert("كلمة المرور غير صحيحة! هذا المكان خاص بشخصين فقط 🔒");
-            }
-        }
-
-        // البيانات الافتراضية الأولية
-        const defaultDate = "2025-11-01";
-        const defaultMessages = [
-            "كل يوم يمر معكِ هو أجمل أيام عمري. صممت هذا المكان الخاص لأجلكِ يا هبة ❤️",
-            "أنتِ لستِ فقط شخصاً غالياً، أنتِ الجزء الأجمل والأثمن في كل تفاصيل حياتي ✨",
-            "أعدكِ أن أظل بجانبكِ، وأن نحسب أيامنا معاً ثانية بثانية وللأبد 🔒"
+        // مصفوفات العبارات
+        const lovePhrases = [
+            "أنتِ حلوى حياتي 🍬", "حبك ينبض في قلبي نوراً وعافية ✨", 
+            "كل فرقعة هي نبضة حب لكِ يا هبة 💖", "ضحكتكِ غزل وسكر يذوب في قلبي 🌸", 
+            "أنتِ عالمي الصغير، الحاضر والمستقبل 🌍"
         ];
 
-        let savedDate = localStorage.getItem('loveStartDate') || defaultDate;
-        let savedMessages = JSON.parse(localStorage.getItem('loveMessages')) || defaultMessages;
-        let currentMsgIndex = 0;
+        const fortunePhrases = [
+            "حظكِ اليوم: ستحصلين على غمرة دافئة قريباً جداً! 🤗❤️",
+            "حظكِ اليوم: هناك شخص يفكر بابتسامتكِ في هذه الثواني 👑",
+            "حظكِ اليوم: يوم مليء بالدلال والهدايا اللطيفة 🎁✨",
+            "حظكِ اليوم: نجمكِ يلمع في سماء قلبي بشكل غير طبيعي 🌌"
+        ];
 
-        function updateCounter() {
-            const startDate = new Date(savedDate);
-            const now = new Date();
-            const difference = now - startDate;
-
-            const days = Math.floor(difference / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((difference % (1000 * 60)) / 1000);
-
-            document.getElementById("days").innerText = days;
-            document.getElementById("hours").innerText = hours;
-            document.getElementById("minutes").innerText = minutes;
-            document.getElementById("seconds").innerText = seconds;
-        }
-
-        function displayMessage() {
-            if(savedMessages.length === 0) {
-                document.getElementById("msgDisplay").innerText = "لا توجد رسائل حالياً.";
-                return;
-            }
-            document.getElementById("msgDisplay").innerText = savedMessages[currentMsgIndex];
-            document.getElementById("prevBtn").disabled = currentMsgIndex === 0;
-            document.getElementById("nextBtn").disabled = currentMsgIndex === savedMessages.length - 1;
-        }
-
-        function changeMessage(direction) {
-            currentMsgIndex += direction;
-            displayMessage();
-        }
-
-        function createFallingHearts() {
-            const bg = document.getElementById("heartsBg");
-            setInterval(() => {
-                const heart = document.createElement("div");
-                heart.classList.add("falling-heart");
-                heart.innerHTML = "❤️";
-                heart.style.left = Math.random() * 100 + "vw";
-                heart.style.fontSize = (Math.random() * 15 + 15) + "px";
-                heart.style.animationDuration = (Math.random() * 3 + 4) + "s";
-                if(bg) bg.appendChild(heart);
-                setTimeout(() => { heart.remove(); }, 7000);
-            }, 400);
-        }
-
-        // تشغيل الوظائف الأساسية بعد الدخول الصحيح
-        function initSite() {
-            displayMessage();
-            setInterval(updateCounter, 1000);
-            updateCounter();
-            createFallingHearts();
-        }
-
-        // لوحة التحكم الداعمة لتعديل الرسائل مباشرة
-        function toggleAdminPanel() {
-            const panel = document.getElementById("adminPanel");
-            if (panel.style.display === "block") {
-                panel.style.display = "none";
+        // تهيئة المتغيرات الأساسية
+        const startDate = new Date("2025-10-23T00:00:00");
+        let audioContext, audioNode;
+        const bgMusic = document.getElementById("bgMusic");
+        
+        // التحقق من الحماية وقفل الدخول
+        document.getElementById("lockForm").addEventListener("submit", function(e) {
+            e.preventDefault();
+            const pass = document.getElementById("passInput").value.toLowerCase();
+            if (pass === "heba" || pass === "mkk") {
+                document.getElementById("lockScreen").style.opacity = "0";
+                setTimeout(() => {
+                    document.getElementById("lockScreen").classList.add("hidden");
+                    document.getElementById("mainContent").classList.remove("hidden");
+                    startLiveSystems();
+                }, 500);
             } else {
-                panel.style.display = "block";
-                document.getElementById("newDate").value = savedDate;
-                document.getElementById("newMessages").value = savedMessages.join("\n");
+                document.getElementById("errorMsg").style.display = "block";
+                document.getElementById("passInput").value = "";
             }
+        });
+
+        function startLiveSystems() {
+            // تشغيل العداد والموسيقى بعد الحماية
+            setInterval(updateLoveCounter, 1000);
+            bgMusic.play().then(() => musicIsPlaying = true).catch(() => console.log("تأخر التشغيل التلقائي"));
+            loadBoardMessages();
         }
 
-        function saveAdminChanges() {
-            const newDateVal = document.getElementById("newDate").value;
-            const newLines = document.getElementById("newMessages").value.split("\n").filter(line => line.trim() !== "");
-
-            if(newDateVal) {
-                localStorage.setItem('loveStartDate', newDateVal);
-                savedDate = newDateVal;
-            }
-            if(newLines.length > 0) {
-                localStorage.setItem('loveMessages', JSON.stringify(newLines));
-                savedMessages = newLines;
-            }
-
-            currentMsgIndex = 0;
-            displayMessage();
-            updateCounter();
-            alert("تم تحديث الرسائل والبيانات بنجاح! ❤️");
-            toggleAdminPanel();
+        // 1. نظام عداد الوقت الحقيقي
+        function updateLoveCounter() {
+            const now = new Date();
+            const diff = now.getTime() - startDate.getTime();
+            document.getElementById("timer-days").innerText = Math.floor(diff / (1000 * 60 * 60 * 24));
+            document.getElementById("timer-hours").innerText = Math.floor((diff / (1000 * 60 * 60)) % 24);
+            document.getElementById("timer-mins").innerText = Math.floor((diff / (1000 * 60)) % 60);
+            document.getElementById("timer-secs").innerText = Math.floor((diff / 1000) % 60);
         }
-    </script>
-</body>
-</html>
+
+        // 2. شريط قياس نسبة الحب وتغيير العبارات تلقائياً
+        const slider = document.getElementById("loveSlider");
+        slider.addEventListener("input", function() {
+            const val = Number(slider.value);
+            document.getElementById("sliderResult").innerText = val + "%";
+            let desc = "";
+            if (val < 30) desc = "مستحيل! قلبي مليء بكِ أكثر من هذا بكثير 😢";
+            else if (val >= 30 && val < 70) desc = "حبنا يكبر في كل دقيقة وثانية نعيشها معاً 🌸";
+            else if (val >= 70 && val < 100) desc = "اقتربتِ جداً من استيعاب حجمكِ في قلبي! 💖";
+            else if (val === 100) desc = "أنتِ تخطيتِ مئة بالمئة! أنتِ كلي، دنيتي وعمري بأكمله! 👑🔥";
+            document.getElementById("sliderDesc").innerText = desc;
+        });
+
+        // 3. لعبة زر لا الهارب من الفأرة واللمس
+        const noBtn = document.getElementById("noBtn");
+        function moveNoButton() {
+            const box = document.getElementById("questionBox");
+            const boxWidth = box.clientWidth - 100;
+            const boxHeight = box.clientHeight - 80;
+            const randomX = (Math.random() - 0.5) * boxWidth;
+            const randomY = (Math.random() - 0.5) * boxHeight;
+            noBtn.
