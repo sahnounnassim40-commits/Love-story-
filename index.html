@@ -101,55 +101,46 @@
         .header-section h1 { font-size: 28px; color: #db2777; margin-top: 10px; font-weight: 800; }
         .header-section p { color: #6b7280; font-size: 13px; margin-top: 5px; }
 
-        /* 1. عداد الوقت المستمر */
         .grid-timer { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 15px; }
         .timer-box { background: white; padding: 12px; border-radius: 16px; border: 1px solid #fce7f3; }
         .timer-box .value { display: block; font-size: 24px; font-weight: 900; color: #db2777; }
         .timer-box .label { font-size: 11px; color: #9ca3af; }
 
-        /* 2. شريط التمرير */
         .slider-input { width: 100%; margin: 15px 0; cursor: pointer; accent-color: #ec4899; }
         .slider-result { font-size: 28px; font-weight: 900; color: #ec4899; margin-bottom: 5px; }
         .slider-desc { font-size: 14px; font-weight: 600; color: #be185d; min-height: 22px; }
 
-        /* 3. زر لا الهارب */
         .escape-box { min-height: 150px; display: flex; flex-direction: column; justify-content: center; align-items: center; }
         .btn-container { display: flex; gap: 20px; justify-content: center; align-items: center; width: 100%; height: 60px; position: relative; margin-top: 15px; }
         .yes-btn { background: linear-gradient(to right, #ec4899, #f43f5e); color: white; font-weight: bold; padding: 12px 35px; border-radius: 50px; border: none; cursor: pointer; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); z-index: 10; font-size: 15px; }
         .no-btn { background: #f3f4f6; color: #6b7280; font-weight: 600; padding: 10px 25px; border-radius: 50px; border: 1px solid #e5e7eb; position: absolute; cursor: pointer; transition: all 0.15s ease; z-index: 10; }
 
-        /* 4. صندوق الهدايا التفاعلي */
         .gift-icon { font-size: 55px; cursor: pointer; transition: transform 0.2s; }
         .gift-icon:hover { transform: scale(1.1); }
         .gift-content { display: none; animation: fadeIn 0.5s ease; }
         .reset-gift { font-size: 12px; color: #9ca3af; text-decoration: underline; background: none; border: none; cursor: pointer; margin-top: 10px; }
 
-        /* 5. بلورة الحظ */
         .crystal-ball { width: 85px; height: 85px; background: linear-gradient(135deg, #c084fc, #f472b6, #fba5a5); border-radius: 50%; margin: 15px auto; box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1); cursor: pointer; display: flex; alignItems: center; justify-content: center; font-size: 38px; border: 4px solid white; display: flex; align-items: center; justify-content: center; transition: transform 0.3s; }
         .crystal-ball:active { transform: scale(0.9); }
         .fortune-text { font-size: 14px; font-weight: 500; color: #7e22ce; background: #faf5ff; padding: 12px; border-radius: 16px; border: 1px solid #e9d5ff; margin-top: 10px; }
 
-        /* 6. تحدي الـ 5 ثواني */
         .game-btn { background: #a855f7; color: white; font-weight: bold; padding: 10px 25px; border-radius: 50px; border: none; font-size: 13px; cursor: pointer; margin-top: 10px; }
         .click-target { width: 75px; height: 75px; background: #f43f5e; color: white; font-weight: 900; border-radius: 50%; font-size: 26px; border: 4px solid white; cursor: pointer; box-shadow: 0 10px 15px rgba(244, 63, 94, 0.3); margin: 15px auto; display: none; align-items: center; justify-content: center; }
         .game-status { font-size: 13px; color: #f43f5e; font-weight: bold; display: none; }
         .game-result { display: none; background: #fff5f5; padding: 12px; border-radius: 16px; border: 1px solid #fee2e2; margin-top: 10px; }
 
-        /* 7. لوحة الذكريات والرسائل المحفوظة (تعويض الداتابيز محلياً) */
         .msg-input-box { display: flex; gap: 10px; margin-top: 15px; }
         .msg-input { flex: 1; padding: 12px 20px; border-radius: 50px; border: 1px solid #fbcfe8; outline: none; }
         .msg-submit { background: #db2777; color: white; border: none; padding: 0 20px; border-radius: 50px; cursor: pointer; font-weight: bold; }
         .board-messages { text-align: right; margin-top: 15px; display: flex; flex-direction: column; gap: 10px; max-height: 200px; overflow-y: auto; }
         .board-note { background: white; padding: 10px 15px; border-radius: 12px; border-right: 4px solid #db2777; font-size: 13px; box-shadow: 0 2px 4px rgba(0,0,0,0.02); }
 
-        /* 8. الخط الزمني للذكريات */
         .timeline { border-right: 2px solid #fbcfe8; padding-right: 20px; text-align: right; display: flex; flex-direction: column; gap: 25px; margin-top: 20px; }
         .timeline-item { position: relative; }
         .timeline-dot { position: absolute; right: -27px; top: 4px; background: #f472b6; width: 12px; height: 12px; border-radius: 50%; border: 2px solid white; }
         .timeline-item h4 { font-size: 14px; font-weight: bold; color: #1f2937; }
         .timeline-item p { font-size: 12px; color: #6b7280; margin-top: 4px; }
 
-        /* عناصر التحكم العائمة (الصوت والعلكة) */
         .floating-controls { position: fixed; bottom: 25px; left: 25px; right: 25px; display: flex; justify-content: space-between; pointer-events: none; z-index: 40; }
         .floating-btn { width: 56px; height: 56px; background: white; border-radius: 50%; border: 1px solid #fce7f3; display: flex; align-items: center; justify-content: center; font-size: 24px; cursor: pointer; box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1); pointer-events: auto; transition: transform 0.2s; }
         .bubblegum-container { display: flex; flex-direction: column; align-items: center; pointer-events: auto; }
@@ -161,21 +152,24 @@
 </head>
 <body>
 
+    <!-- شاشة القفل والتحقق من الاسم (تم تصحيحها لتعمل كأزرار مباشرة بدل النماذج) -->
     <div id="lockScreen">
         <div class="lock-card">
             <div class="lock-icon">🔒</div>
             <h2>موقعنا السري الخواص</h2>
             <p>أدخلي الكلمة السرية المخصصة لدخول عالمنا</p>
-            <form id="lockForm">
+            <div id="lockFormDiv">
                 <input type="password" id="passInput" class="lock-input" placeholder="اكتبِ اسمكِ الجميل بـ English...">
                 <p id="errorMsg" class="error-msg">الكلمة خاطئة يا روحي، حاولي مجدداً! ❤️</p>
-                <button type="submit" class="lock-btn">دخول الملكة هبة ✨</button>
-            </form>
+                <button type="button" id="submitPassBtn" class="lock-btn">دخول الملكة هبة ✨</button>
+            </div>
         </div>
     </div>
 
+    <!-- محتوى الموقع الرئيسي المنسق -->
     <div id="mainContent" class="hidden">
         
+        <!-- عنصر الصوت الخفي للأغنية -->
         <audio id="bgMusic" src="another-love.mp3" loop></audio>
 
         <div class="container">
@@ -186,6 +180,7 @@
                 <p>كل حركة هنا تتفاعل معكِ وتنبض بموسيقى الحب والجمال</p>
             </div>
 
+            <!-- 1. عداد الوقت المستمر -->
             <div class="card">
                 <h3 style="font-size: 15px; color:#db2777; font-weight: bold;">عداد حبنا المستمر منذ أول يوم ⏱️</h3>
                 <div class="grid-timer" dir="ltr">
@@ -196,6 +191,7 @@
                 </div>
             </div>
 
+            <!-- 2. شريط قياس الحب -->
             <div class="card">
                 <h3 style="font-size: 16px; font-weight: bold;">اسحبي الشريط: كم أحبكِ اليوم؟ 🤔</h3>
                 <input type="range" id="loveSlider" class="slider-input" min="0" max="100" value="50">
@@ -203,6 +199,7 @@
                 <div id="sliderDesc" class="slider-desc">حبنا يكبر في كل دقيقة وثانية نعيشها معاً 🌸</div>
             </div>
 
+            <!-- 3. تحدي زر لا الهارب التفاعلي -->
             <div class="card escape-box" id="questionBox">
                 <div id="pollQuestion">
                     <h3 style="font-size: 19px; font-weight: 900;">هل تحبينني يا هبة؟ 🥺❤️</h3>
@@ -217,6 +214,7 @@
                 </div>
             </div>
 
+            <!-- 4. صندوق الهدايا المتجدد -->
             <div class="card">
                 <div id="giftClosed">
                     <div class="gift-icon" id="giftBtn">🎁</div>
@@ -229,12 +227,14 @@
                 </div>
             </div>
 
+            <!-- 5. بلورة كاشف الحظ اليومي -->
             <div class="card">
                 <h3 style="font-size: 17px; font-weight: bold;">🔮 بلورة المشاعر وكاشف الحظ اليومي</h3>
                 <div class="crystal-ball" id="crystalBall">🔮</div>
                 <p class="fortune-text" id="fortuneText">اضغطي لفرك البلورة وكشف حظكِ اليوم... 🔮</p>
             </div>
 
+            <!-- 6. لعبة تحدي سرعة النقر (5 ثواني) -->
             <div class="card">
                 <h3 style="font-size: 15px; font-weight: bold;">⏱️ تحدي سرعة ضغطات الحب لهبة</h3>
                 <p style="font-size: 12px; color: #9ca3af; margin-top: 4px;">اضغطي على الزر بأكبر عدد ممكن خلال 5 ثوانٍ لإرسال نبضات الحب!</p>
@@ -247,6 +247,7 @@
                 </div>
             </div>
 
+            <!-- 7. لوحة الرسائل المشتركة المحفوظة (بديل الداتابيز الموضعي) -->
             <div class="card">
                 <h3 style="font-size: 16px; font-weight: bold;">📌 لوحة رسائلنا وذكرياتنا السرية</h3>
                 <p style="font-size: 11px; color: #9ca3af;">اكتبي رسالة قصيرة أو ذكرى اليوم لتبقى محفوظة هنا في المتصفح دائماً</p>
@@ -257,6 +258,7 @@
                 <div class="board-messages" id="boardMessages"></div>
             </div>
 
+            <!-- 8. الخط الزمني للقصة -->
             <div class="card">
                 <h3 style="font-size: 17px; font-weight: bold; color: #db2777; margin-bottom: 10px;">محطات حكايتنا اللطيفة 🗺️</h3>
                 <div class="timeline">
@@ -280,6 +282,7 @@
 
         </div>
 
+        <!-- أزرار عائمة أسفل الشاشة (الصوت + علكة الحب السحرية) -->
         <div class="floating-controls">
             <button class="floating-btn" id="musicToggleBtn" style="color: #ec4899;">🎵</button>
             
@@ -311,11 +314,13 @@
         let audioContext, audioNode;
         const bgMusic = document.getElementById("bgMusic");
         
-        // التحقق من الحماية وقفل الدخول
-        document.getElementById("lockForm").addEventListener("submit", function(e) {
-            e.preventDefault();
-            const pass = document.getElementById("passInput").value.toLowerCase();
+        // التحقق من الحماية (تم التعديل لتجنب التحديث التلقائي للصفحة)
+        function checkPassword() {
+            const passInput = document.getElementById("passInput");
+            const pass = passInput.value.toLowerCase().trim(); // تجاهل المسافات الزائدة
+            
             if (pass === "heba" || pass === "mkk") {
+                document.getElementById("errorMsg").style.display = "none";
                 document.getElementById("lockScreen").style.opacity = "0";
                 setTimeout(() => {
                     document.getElementById("lockScreen").classList.add("hidden");
@@ -324,12 +329,22 @@
                 }, 500);
             } else {
                 document.getElementById("errorMsg").style.display = "block";
-                document.getElementById("passInput").value = "";
+                passInput.value = "";
+            }
+        }
+
+        // الاستماع لزر الدخول
+        document.getElementById("submitPassBtn").addEventListener("click", checkPassword);
+
+        // الاستماع لزر Enter في لوحة المفاتيح
+        document.getElementById("passInput").addEventListener("keypress", function(e) {
+            if (e.key === "Enter") {
+                e.preventDefault();
+                checkPassword();
             }
         });
 
         function startLiveSystems() {
-            // تشغيل العداد والموسيقى بعد الحماية
             setInterval(updateLoveCounter, 1000);
             bgMusic.play().then(() => musicIsPlaying = true).catch(() => console.log("تأخر التشغيل التلقائي"));
             loadBoardMessages();
@@ -345,7 +360,7 @@
             document.getElementById("timer-secs").innerText = Math.floor((diff / 1000) % 60);
         }
 
-        // 2. شريط قياس نسبة الحب وتغيير العبارات تلقائياً
+        // 2. شريط قياس نسبة الحب
         const slider = document.getElementById("loveSlider");
         slider.addEventListener("input", function() {
             const val = Number(slider.value);
@@ -353,17 +368,4 @@
             let desc = "";
             if (val < 30) desc = "مستحيل! قلبي مليء بكِ أكثر من هذا بكثير 😢";
             else if (val >= 30 && val < 70) desc = "حبنا يكبر في كل دقيقة وثانية نعيشها معاً 🌸";
-            else if (val >= 70 && val < 100) desc = "اقتربتِ جداً من استيعاب حجمكِ في قلبي! 💖";
-            else if (val === 100) desc = "أنتِ تخطيتِ مئة بالمئة! أنتِ كلي، دنيتي وعمري بأكمله! 👑🔥";
-            document.getElementById("sliderDesc").innerText = desc;
-        });
-
-        // 3. لعبة زر لا الهارب من الفأرة واللمس
-        const noBtn = document.getElementById("noBtn");
-        function moveNoButton() {
-            const box = document.getElementById("questionBox");
-            const boxWidth = box.clientWidth - 100;
-            const boxHeight = box.clientHeight - 80;
-            const randomX = (Math.random() - 0.5) * boxWidth;
-            const randomY = (Math.random() - 0.5) * boxHeight;
-            noBtn.
+            else if (val >= 70 &&
