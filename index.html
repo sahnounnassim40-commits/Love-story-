@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إلى هبة ❤️</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #fff5f5;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #4a4a4a;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 600px;
+            width: 90%;
+            margin: 30px auto;
+            text-align: center;
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(253, 121, 168, 0.15);
+        }
+        h1 { color: #d63031; font-size: 2.5rem; margin-bottom: 10px; }
+        .heart { color: #e84393; font-size: 3rem; animation: heartbeat 1.2s infinite; margin: 20px 0; }
+        @keyframes heartbeat {
+            0% { transform: scale(1); }
+            20% { transform: scale(1.1); }
+            40% { transform: scale(1.05); }
+            60% { transform: scale(1.15); }
+            80% { transform: scale(1); }
+            100% { transform: scale(1); }
+        }
+        .message { font-size: 1.2rem; line-height: 1.8; color: #636e72; margin-bottom: 30px; border-right: 3px solid #e84393; padding-right: 15px; text-align: right; }
+        .counter-title { font-size: 1.1rem; color: #2d3436; font-weight: bold; margin-top: 20px; }
+        .countdown { display: flex; justify-content: center; gap: 15px; margin-top: 15px; }
+        .time-box { background: #ffeaa7; color: #2d3436; padding: 10px 15px; border-radius: 10px; font-weight: bold; min-width: 70px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+        .time-box span { display: block; font-size: 1.5rem; color: #d63031; }
+        .footer { margin-top: 40px; font-size: 0.9rem; color: #b2bec3; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>إلى هبة ❤️</h1>
+        <div class="heart">❤️</div>
+        
+        <div class="message">
+            كل يوم يمر معكِ هو أجمل أيام عمري. صممت هذا المكان الخاص لأجلكِ، ليبقى شاهداً على كل لحظة جميلة نعيشها معاً، ولأخبركِ دائماً كم أنتِ غالية ومميزة في حياتي.
+        </div>
+
+        <div class="counter-title">الوقت الذي عشناه معاً:</div>
+        <div class="countdown">
+            <div class="time-box"><span id="days">0</span>أيام</div>
+            <div class="time-box"><span id="hours">0</span>ساعات</div>
+            <div class="time-box"><span id="minutes">0</span>دقائق</div>
+            <div class="time-box"><span id="seconds">0</span>ثوانٍ</div>
+        </div>
+
+        <div class="footer">صُنع بكل حب لأجل هبة ✨</div>
+    </div>
+
+    <script>
+        // حدد تاريخ بداية العلاقة هنا بالترتيب: (السنة، الشهر ناقص 1، اليوم)
+        // مثلاً: لو كانت البداية في 1 نوفمبر 2025، نكتب الشهر رقم 10 لأن العد يبدأ من 0
+        const startDate = new Date(2025, 10, 1); 
+
+        function updateCounter() {
+            const now = new Date();
+            const difference = now - startDate;
+            const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+            document.getElementById("days").innerText = days;
+            document.getElementById("hours").innerText = hours;
+            document.getElementById("minutes").innerText = minutes;
+            document.getElementById("seconds").innerText = seconds;
+        }
+        setInterval(updateCounter, 1000);
+        updateCounter();
+    </script>
+</body>
+</html>
