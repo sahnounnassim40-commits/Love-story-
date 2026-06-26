@@ -2,7 +2,6 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>عالم هبة السحري</title>
     <style>
         body { font-family: 'Segoe UI', sans-serif; text-align: center; background: linear-gradient(135deg, #fdf2f8, #fff1f2); min-height: 100vh; padding: 20px; }
@@ -13,39 +12,59 @@
 </head>
 <body>
 
+    <!-- قسم العرض الرئيسي -->
     <div class="card">
         <h1 id="msgTitle">مرحباً بهبة 👑</h1>
         <p id="msgBody">أهلاً بكِ في عالمك السري والخاص.</p>
+        
+        <!-- إضافة عداد الأيام -->
+        <div id="counterArea" style="margin-top: 15px; color: #db2777; font-weight: bold;">
+            مضى على لقائنا: <span id="daysCount">0</span> يوم ❤️
+        </div>
     </div>
 
+    <!-- قسم لوحة الأدمن -->
     <div class="card">
         <h3>لوحة الأدمن ⚙️</h3>
-        <input type="password" id="adminPass" placeholder="كلمة سر الأدمن...">
+        <input type="password" id="adminPass" placeholder="كلمة السر...">
         <div id="adminPanel" style="display:none;">
             <input type="text" id="newMsg" placeholder="رسالة جديدة لهبة...">
             <button onclick="updateMsg()">تحديث الرسالة</button>
         </div>
-        <button id="loginBtn" onclick="checkAdmin()">دخول الأدمن</button>
+        <button id="loginBtn" onclick="checkAdmin()">دخول</button>
     </div>
 
     <script>
-        // تحميل الرسالة عند فتح الصفحة
+        // تحميل الرسالة المحفوظة
         document.getElementById('msgBody').innerText = localStorage.getItem('siteMsg') || "أنتِ أجمل ملكة في هذا العالم ❤️";
 
+        // حساب الأيام (تاريخ البداية 1 نوفمبر 2025)
+        function calculateDays() {
+            const startDate = new Date("2025-11-01");
+            const today = new Date();
+            const diffTime = Math.abs(today - startDate);
+            const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)); 
+            document.getElementById('daysCount').innerText = diffDays;
+        }
+        calculateDays();
+
+        // وظيفة التحقق من كلمة السر
         function checkAdmin() {
-            if(document.getElementById('adminPass').value === "1234") {
+            const pass = document.getElementById('adminPass').value;
+            if(pass === "love and cry") {
                 document.getElementById('adminPanel').style.display = "block";
                 document.getElementById('loginBtn').style.display = "none";
             } else {
-                alert("كلمة سر خاطئة!");
+                alert("كلمة السر غير صحيحة!");
             }
         }
 
+        // وظيفة تحديث الرسالة
         function updateMsg() {
             const newText = document.getElementById('newMsg').value;
             localStorage.setItem('siteMsg', newText);
             document.getElementById('msgBody').innerText = newText;
-            alert("تم التحديث! اطلبي من هبة تحديث الصفحة لترى الرسالة.");
+            alert("تم تحديث الرسالة بنجاح!");
         }
     </script>
 </body>
