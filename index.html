@@ -3,44 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>عالم هبة السحري التفاعلي 👑</title>
+    <title>عالم هبة السحري</title>
     <style>
-        /* نفس التصميم الجميل السابق */
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
-        body { background: linear-gradient(135deg, #fdf2f8 0%, #fff1f2 50%, #fffbeb 100%); min-height: 100vh; color: #1f2937; overflow-x: hidden; padding-bottom: 100px; }
-        .container { max-width: 600px; margin: 0 auto; padding: 20px; display: flex; flex-direction: column; gap: 30px; }
-        
-        /* البطاقات */
-        .card { background: rgba(255, 255, 255, 0.75); backdrop-filter: blur(10px); padding: 25px; border-radius: 24px; border: 1px solid #fce7f3; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05); text-align: center; }
-        .header-section h1 { font-size: 28px; color: #db2777; font-weight: 800; }
-        
-        /* (أضف هنا باقي الـ CSS الخاص بك من الكود السابق ليعمل التصميم كاملاً) */
+        body { font-family: 'Segoe UI', sans-serif; text-align: center; background: linear-gradient(135deg, #fdf2f8, #fff1f2); min-height: 100vh; padding: 20px; }
+        .card { background: white; padding: 25px; border-radius: 25px; box-shadow: 0 10px 15px rgba(0,0,0,0.1); max-width: 400px; margin: 20px auto; }
+        input { padding: 12px; border-radius: 10px; border: 1px solid #ddd; width: 80%; margin: 10px 0; }
+        button { padding: 12px 25px; background: #db2777; color: white; border: none; border-radius: 10px; cursor: pointer; font-weight: bold; }
     </style>
 </head>
 <body>
 
-    <!-- تم حذف شاشة القفل، المحتوى يظهر مباشرة -->
-    <audio id="bgMusic" src="another-love.mp3" loop></audio>
+    <div class="card">
+        <h1 id="msgTitle">مرحباً بهبة 👑</h1>
+        <p id="msgBody">أهلاً بكِ في عالمك السري والخاص.</p>
+    </div>
 
-    <div class="container">
-        <div class="card header-section">
-            <h1>عالم هبة السحري التفاعلي 👑</h1>
-            <p>مرحباً بكِ يا ملكة، هذا العالم صُمم لأجلك وحدك!</p>
+    <div class="card">
+        <h3>لوحة الأدمن ⚙️</h3>
+        <input type="password" id="adminPass" placeholder="كلمة سر الأدمن...">
+        <div id="adminPanel" style="display:none;">
+            <input type="text" id="newMsg" placeholder="رسالة جديدة لهبة...">
+            <button onclick="updateMsg()">تحديث الرسالة</button>
         </div>
-        
-        <!-- هنا ضع باقي محتويات موقعك (العداد، الألعاب، إلخ) كما كانت في الكود السابق -->
+        <button id="loginBtn" onclick="checkAdmin()">دخول الأدمن</button>
     </div>
 
     <script>
-        // تشغيل الأنظمة فوراً عند تحميل الصفحة
-        window.onload = function() {
-            startLiveSystems();
-        };
+        // تحميل الرسالة عند فتح الصفحة
+        document.getElementById('msgBody').innerText = localStorage.getItem('siteMsg') || "أنتِ أجمل ملكة في هذا العالم ❤️";
 
-        function startLiveSystems() {
-            // كود العدادات والأنظمة التفاعلية
-            console.log("النظام يعمل مباشرة!");
-            // تأكد من إضافة باقي دوال الـ JavaScript الخاصة بك هنا
+        function checkAdmin() {
+            if(document.getElementById('adminPass').value === "1234") {
+                document.getElementById('adminPanel').style.display = "block";
+                document.getElementById('loginBtn').style.display = "none";
+            } else {
+                alert("كلمة سر خاطئة!");
+            }
+        }
+
+        function updateMsg() {
+            const newText = document.getElementById('newMsg').value;
+            localStorage.setItem('siteMsg', newText);
+            document.getElementById('msgBody').innerText = newText;
+            alert("تم التحديث! اطلبي من هبة تحديث الصفحة لترى الرسالة.");
         }
     </script>
 </body>
